@@ -1,0 +1,40 @@
+blockchain
+
+create the lottery function
+configure the truffle.config for ganache for testing will put in test network later
+deploy it in ganache using the manager and then paste the json file in src folder
+run the frontend and use the manager to check the balance(it should show , if not check the metamask)
+
+frontend
+
+create a manager component and import it in app,js, 
+there give state as the prop as we want to interact with wallent and smart contract
+and let manager.js take it as an input
+
+now manager will do two thing - show balance and select winner so will will create 3 states -account, contract balance-cBalance, winner
+then we use the useEffect to get the account of the first person everytime website loads
+then make a function to call() the getBalance() function
+then make a function to send() the pickWinner() function
+
+call() is used when we just want to get something and not make any change in the blokchain as u can see in the lottery.sol contract that getBalance just gives a value
+
+send() is used when we try to change the state of the blokchain as in contract pickWinner() function
+
+so now the manager has 2 things to do first is to check balance and second is to pickWinner and what pick winner function does is it gransfer the total balance of the contract to the winner as u can go and see in the contract
+
+now create a player component where player will put money
+
+here we use two useEffect first get the account from the ganache account we have impoted through metamask, and second getPlayers those who have registered 
+
+
+1 useEffect - it depends on state.web3 and state
+it takes account and set the firstaccount to useaState
+
+2 useEffect - it depends on state and state.contract as as it interact with contract to see who all have registered and then maps through all returning each and storing in registeredPlayers and it is then given to useState , we call the allPlayer func of contract that contains the addresseds of the the that have paid and the contract have received
+
+in app.js we give it state and address prop which contain the address of the deployednetwork ie the address of contract which the registered player pays to
+
+now we will have two pages manager and players so we require react router s we install it
+
+rest all written in notebook
+
